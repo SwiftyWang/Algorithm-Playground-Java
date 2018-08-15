@@ -13,33 +13,46 @@ public class TestSort {
         String ret = null;
 
         long start, end;
+        // bubble sorter
+        start = System.currentTimeMillis();
+        sorter = new BubbleSorter();
+        res = sorter.sort(test1);
+        ret = Arrays.toString(res);
+        System.out.println("Bubble Result1:" + ret);
+
+        res = sorter.sort(test2);
+        ret = Arrays.toString(res);
+        System.out.println("Bubble Result2:" + ret);
+
+        end = System.currentTimeMillis();
+        System.out.println("Bubble spend time:" + (end - start));
 
         // quick sorter
         start = System.currentTimeMillis();
         sorter = new QuickSorter();
         res = sorter.sort(test1);
         ret = Arrays.toString(res);
-        System.out.println("Quick Sorter Result1 :" + ret);
+        System.out.println("Quick Result1 :" + ret);
 
         res = sorter.sort(test2);
         ret = Arrays.toString(res);
-        System.out.println("Quick Sorter Result2 :" + ret);
+        System.out.println("Quick Result2 :" + ret);
 
         end = System.currentTimeMillis();
         System.out.println("Quick spend time:" + (end - start));
 
-        // bubble sorter
+        // quick sorter2
         start = System.currentTimeMillis();
-        sorter = new BubbleSorter();
+        sorter = new QuickSorter2();
         res = sorter.sort(test1);
         ret = Arrays.toString(res);
-        System.out.println("Bubble Sorter Result1:" + ret);
+        System.out.println("Quick2 Result1:" + ret);
 
         res = sorter.sort(test2);
         ret = Arrays.toString(res);
-        System.out.println("Bubble Sorter Result2:" + ret);
+        System.out.println("Quick2 Result2:" + ret);
 
         end = System.currentTimeMillis();
-        System.out.println("Bubble spend time:" + (end - start));
+        System.out.println("Quick2 spend time:" + (end - start));
     }
 }

@@ -1,19 +1,15 @@
+package sort;
+
 import java.util.Arrays;
 import java.util.Stack;
 import java.util.stream.Stream;
 
-public class QuickSort {
+public class QuickSorter implements Sorter<Integer> {
 
-    public static void main(String[] args) {
-        Integer[] nums = new Integer[]{6, 4, 2, 10, 16, 13, 20, 50, 32, 1};
-        Integer[] res = quickSort(nums);
-        String ret = Arrays.toString(res);
-        System.out.println("Result:" + ret);
-    }
-
-    private static Integer[] quickSort(Integer[] nums) {
+    @Override
+    public Integer[] sort(Integer[] nums) {
         String ret = Arrays.toString(nums);
-        System.out.println(ret);
+        //System.out.println(ret);
         if (nums.length <= 1) {
             return nums;
         }
@@ -32,10 +28,10 @@ public class QuickSort {
         }
         Integer[] leftArray = left.toArray(new Integer[]{});
         Integer[] rightArray = right.toArray(new Integer[]{});
-        return concat(quickSort(leftArray), concat(new Integer[]{nums[mid]}, quickSort(rightArray)));
+        return concat(sort(leftArray), concat(new Integer[]{nums[mid]}, sort(rightArray)));
     }
 
-    public static Integer[] concat(Integer[] a1, Integer[] a2) {
+    private Integer[] concat(Integer[] a1, Integer[] a2) {
         Stream<Integer> stream1 = Stream.of(a1);
         Stream<Integer> stream2 = Stream.of(a2);
         Stream<Integer> stream = Stream.concat(stream1, stream2);
